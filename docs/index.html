@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Subbagian Registrasi dan Statistik Untirta" />
+
+
+<title>Update Data Dosen</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Update Data Dosen</h1>
+<h4 class="author">Subbagian Registrasi dan Statistik Untirta</h4>
+<h4 class="date">Diupdate pada: 06 November 2020</h4>
+
+</div>
+
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 14px;
+  }
+td {  /* Table  */
+  font-size: 12px;
+}
+h1.title {
+  font-size: 28px;
+  color: Maroon;
+}
+h1 { /* Header 1 */
+  font-size: 24px;
+  color: Maroon;
+  font-weight: bold;
+}
+h2 { /* Header 2 */
+  font-size: 20px;
+  color: Maroon;
+  font-weight: bold;
+}
+h3 { /* Header 3 */
+  font-size: 16px;
+#  font-family: "Times New Roman", Times, serif;
+  color: Maroon;
+  font-weight: bold;
+}
+h4 { /* Header 4 */
+  font-size: 14px;
+  color: Maroon;
+  font-weight: bold;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 12px;
+}
+</style>
+<p><br></p>
+<p>Kepada Yth. <br>Staf Kepegawaian Fakultas <br>di lingkungan Universitas Sultan Ageng Tirtayasa</p>
+<p>Kami dari Subbagian Registrasi dan Statistik secara rutin melakukan rekapitulasi tenaga Dosen baik yang berstatus PNS maupun non-PNS. Hal ini penting karena sering adanya permintaan data Dosen yang terkini dari beberapa pihak, misalnya dari BPS Kota, Kabupaten, atau Provinsi. Selain itu, setiap periode wisuda kami juga diminta data dosen terkini sebagai bahan pidato Rektor dan buku Album Wisuda.</p>
+<p>Oleh karena itu, kami memerlukan bantuan rekan-rekan Staf Kepegawaian Fakultas di lingkungan Universitasi Sultan Ageng Tirtayasa untuk membantu kami memperbaharui data dosen setiap ada perubahan. Adapun perubahan-perubahan data dosen yang diperlukan adalah sebagai berikut.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Dosen PNS</strong></p>
+<ul>
+<li><p><em>Pendidikan Terakhir</em><strong>.</strong> Dosen-dosen dengan pendidikan terakhir S2 yang sedang melaksanakan tugas atau ijin belajar dan <strong>sudah menjalani sidang promosi terbuka</strong> bisa segera diubah status Pendidikan Terakhirnya menjadi S3.</p></li>
+<li><p><em>Golongan</em></p></li>
+<li><p><em>Jabatan Akademik</em></p></li>
+<li><p><em>Fakultas</em> dan <em>Program Studi.</em> Keakuratan <em>homebase</em> dosen sangat diperlukan di dalam rekapitulasi untuk menghitung rasio dosen dan mahasiswa di setiap program studi.</p></li>
+<li><p><em>Status Belajar.</em> Selama ini perhitungan rasio dosen dan mahasiswa tetap memperhitungkan dosen yang sedang tugas belajar, sehingga kurang menggambarkan rasio dosen dan mahasiswa yang sebenarnya. Oleh karena itu, kami akan membuat 3 status belajar.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Aktif</strong> bagi dosen yang tidak sedang tugas belajar atau ijin belajar</li>
+<li><strong>Tugas</strong> <strong>Belajar</strong> bagi dosen yang sedang melaksanakan tugas belajar</li>
+<li><strong>Ijin</strong> <strong>Belajar</strong> bagi dosen yang sedang melaksanakan ijin belajar <br><br></li>
+</ol></li>
+<li><p><em>Tahun Mulai Kuliah.</em> Tahun mulai kuliah bagi dosen yang sedang tugas belajar atau ijin belajar.</p></li>
+<li><p><em>Keterangan.</em> Tempat kuliah bagi dosen yang sedang tugas belajar atau ijin belajar.</p></li>
+</ul></li>
+<li><p><strong>Dosen non PNS</strong></p>
+<ul>
+<li><p><em>Pendidikan Terakhir</em></p></li>
+<li><p><em>Jabatan Akademik</em></p></li>
+<li><p><em>Fakultas</em> dan <em>Program Studi</em></p></li>
+</ul></li>
+</ol>
+<p>Dengan demikian, kami berharap agar rekan-rekan Staf Kepagawaian Fakultas bisa membantu kami setiap ada perubahan data-data di atas baik untuk dosen PNS maupun dosen non PNS. Rekan-rekan Staf Kepegawaian Fakultas bisa menghubungi kami melalui <a href="wa.me/628111072357" target="_blank" title="Whatsapp Riana Hadiana"><strong>whatsapp</strong></a>, email ke registrasi@untirta.ac.id atau bisa juga dengan mengedit langsung. Rekan-rekan bisa mengedit langsung melalui link di bawah ini sesuai dengan fakultas dan status dosen (PNS atau non PNS) yang akan diedit.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">No</th>
+<th align="left">Fakultas</th>
+<th align="left">Dosen PNS</th>
+<th align="left">Dosen non PNS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.</td>
+<td align="left">Hukum</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YbkkyE0UbYEqOefhCpcTt9IFPiOBZUg1/edit#gid=105639493" target="_blank" title="Edit data dosen PNS Fakultas Hukum"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XvVRw3UTeTVkYupwkgVjoJXflRjwVRJO/edit#gid=625457900" target="_blank" title="Edit data dosen non PNS Fakultas Hukum"><strong>Edit</strong></a></td>
+</tr>
+<tr class="even">
+<td align="left">2.</td>
+<td align="left">FKIP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Y_FSO4qlWRaSuKOfldoF4KBnejn1poiG/edit#gid=817148474" target="_blank" title="Edit data dosen PNS FKIP"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XvGN0y4gY1LYMe1I3wwFRNelBl0O-1tW/edit#gid=939326303" target="_blank" title="Edit data dosen non PNS FKIP"><strong>Edit</strong></a></td>
+</tr>
+<tr class="odd">
+<td align="left">3.</td>
+<td align="left">Teknik</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YxbYOjvlOGPsEJ3383I25OnSkhpTG17Z/edit#gid=267147312" target="_blank" title="Edit data dosen PNS Fakultas Teknik"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YCNnwhTfzQ3PR-8jMfCCQqn9kzZt4VbS/edit#gid=794603767" target="_blank" title="Edit data dosen non PNS Fakultas Teknik"><strong>Edit</strong></a></td>
+</tr>
+<tr class="even">
+<td align="left">4.</td>
+<td align="left">Pertanian</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YtLOlHudFJL44J2KMMrmMlOhQclHWhae/edit#gid=1002856352" target="_blank" title="Edit data dosen PNS Fakultas Pertanian"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XzSJSR_hkppFsgkwlFZLxEBSx71pPUsm/edit#gid=1031155236" target="_blank" title="Edit data dosen non PNS Fakultas Pertanian"><strong>Edit</strong></a></td>
+</tr>
+<tr class="odd">
+<td align="left">5.</td>
+<td align="left">FEB</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YS75yTp16e_7WA284DUKwKQuy_peePqa/edit#gid=36297912" target="_blank" title="Edit data dosen PNS FEB"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XqepU2EywMGydHDx1_VFNG6k_RXQr9X-/edit#gid=272608791" target="_blank" title="Edit data dosen non PNS FEB"><strong>Edit</strong></a></td>
+</tr>
+<tr class="even">
+<td align="left">6.</td>
+<td align="left">FISIP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YZFG3rXxz-asob5Dca4Wi1M3hcgVVst_/edit#gid=1353640144" target="_blank" title="Edit data dosen PNS FISIP"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XtyjjcinJ8uGXT-NOk0BTeJotBNuc_RS/edit#gid=147078744" target="_blank" title="Edit data dosen non PNS FISIP"><strong>Edit</strong></a></td>
+</tr>
+<tr class="odd">
+<td align="left">7.</td>
+<td align="left">Kedokteran</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YnzOQBUeGvSOE1eaM8i1t8v_ISADuga6/edit#gid=7040061" target="_blank" title="Edit data dosen PNS Fakultas Kedokteran"><strong>Edit</strong></a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XwOaa3bs3uND9jlKNLrDqa5yc3skJB07/edit#gid=1282921123" target="_blank" title="Edit data dosen non PNS Fakultas Kedokteran"><strong>Edit</strong></a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
