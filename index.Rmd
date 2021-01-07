@@ -60,7 +60,48 @@ pre { /* Code block - determines code spacing between lines */
 
 Kepada Yth. <br>Staf Kepegawaian Fakultas <br>di lingkungan Universitas Sultan Ageng Tirtayasa
 
-Kami dari Subbagian Registrasi dan Statistik secara rutin melakukan rekapitulasi tenaga Dosen baik yang berstatus PNS maupun non-PNS. Hal ini penting karena sering adanya permintaan data Dosen yang terkini dari beberapa pihak, misalnya dari BPS Kota, Kabupaten, atau Provinsi. Selain itu, setiap periode wisuda kami juga diminta data dosen terkini sebagai bahan pidato Rektor dan buku Album Wisuda.
+Kami dari Subbagian Registrasi dan Statistik secara rutin melakukan rekapitulasi tenaga Dosen baik yang berstatus PNS maupun non-PNS. Hal ini penting karena sering adanya permintaan data Dosen yang terkini dari beberapa pihak, misalnya dari BPS Kota, Kabupaten, atau Provinsi. Selain itu, setiap periode wisuda kami juga diminta data dosen terkini sebagai bahan pidato Rektor dan buku Album Wisuda. Berikut adalah rekapitulasi dosen PNS dan Dosen tetap Non PNS yang tercatat di Subbagian Registrasi dan Statistik.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(readxl)
+library(tidyverse)
+library(janitor)
+library(kableExtra)
+list <- list.files("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN PNS/Update/")
+
+pns <- NULL
+
+for (i in 1:7) {
+  pns <- rbind(pns, read_excel(paste0("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN PNS/Update/", list[i])))
+}
+
+data1 <- select(pns, Fakultas, JK) %>% group_by(Fakultas, JK) %>% summarize(n = n())
+data1 <- pivot_wider(data1, names_from = JK, values_from = "n")
+data1[is.na(data1)] <- 0
+data1 <- adorn_totals(data1, where = c("col"), name = "JML")
+
+list <- list.files("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN NON PNS/Update Data")
+
+non <- NULL
+for (i in 1:7) {
+  non <- rbind(non, read_excel(paste0("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN NON PNS/Update Data/", list[i])))
+}
+
+data2 <- select(non, Fakultas, JK) %>% group_by(Fakultas, JK) %>% summarize(n = n())
+data2 <- pivot_wider(data2, names_from = JK, values_from = "n")
+data2[is.na(data2)] <- 0
+data2 <- adorn_totals(data2, where = c("col"), name = "JML")
+
+data <- left_join(data1, data2, by = "Fakultas")
+data$Total <- data$JML.x + data$JML.y
+data <- adorn_totals(data, where = c("row"), name = "Total")
+names(data) <- c("Fakultas", "L", "P", "JML", "L", "P", "JML", "Total")
+
+kable(data) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) %>%
+  add_header_above(c(" " = 1, "Dosen PNS" = 3, "Dosen Non PNS" = 3, " " = 1))
+
+```
 
 Oleh karena itu, kami memerlukan bantuan rekan-rekan Staf Kepegawaian Fakultas di lingkungan Universitasi Sultan Ageng Tirtayasa untuk membantu kami memperbaharui data dosen setiap ada perubahan. Adapun perubahan-perubahan data dosen yang diperlukan adalah sebagai berikut.
 
