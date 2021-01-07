@@ -121,6 +121,8 @@ Oleh karena itu, kami memerlukan bantuan rekan-rekan Staf Kepegawaian Fakultas d
         2.  **Tugas** **Belajar** bagi dosen yang sedang melaksanakan tugas belajar
         3.  **Ijin** **Belajar** bagi dosen yang sedang melaksanakan ijin belajar <br><br>
 
+    -   *Jenjang Studi* adalah jenjang studi lanjut yang sedang diambil oleh dosen tugas belajar atau ijin belajar.
+
     -   *Tahun Mulai Kuliah.* Tahun mulai kuliah bagi dosen yang sedang tugas belajar atau ijin belajar.
 
     -   *Keterangan.* Tempat kuliah bagi dosen yang sedang tugas belajar atau ijin belajar.
