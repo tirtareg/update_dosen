@@ -62,7 +62,7 @@ Kepada Yth. <br>Staf Kepegawaian Fakultas <br>di lingkungan Universitas Sultan A
 
 Kami dari Subbagian Registrasi dan Statistik secara rutin melakukan rekapitulasi tenaga Dosen baik yang berstatus PNS maupun non-PNS. Hal ini penting karena sering adanya permintaan data Dosen yang terkini dari beberapa pihak, misalnya dari BPS Kota, Kabupaten, atau Provinsi. Selain itu, setiap periode wisuda kami juga diminta data dosen terkini sebagai bahan pidato Rektor dan buku Album Wisuda. Berikut adalah rekapitulasi dosen PNS dan Dosen tetap Non PNS yang tercatat di Subbagian Registrasi dan Statistik.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl)
 library(tidyverse)
 library(janitor)
@@ -84,8 +84,11 @@ list <- list.files("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN NO
 
 non <- NULL
 for (i in 1:7) {
-  non <- rbind(non, read_excel(paste0("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN NON PNS/Update Data/", list[i])))
+  non <- rbind(non, read_excel(paste0("G:/My Drive/# REGISTRASI DAN STATISTIK/DATA PEGAWAI/DOSEN NON PNS/Update Data/", list[i]), range = "A1:M100"))
 }
+
+# membuang semua baris yang kosong
+non <- non %>% filter_all(any_vars(complete.cases(.)))
 
 data2 <- select(non, Fakultas, JK) %>% group_by(Fakultas, JK) %>% summarize(n = n())
 data2 <- pivot_wider(data2, names_from = JK, values_from = "n")
