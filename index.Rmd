@@ -104,6 +104,37 @@ kable(data) %>%
   kable_styling(bootstrap_options = "striped", full_width = F) %>%
   add_header_above(c(" " = 1, "Dosen PNS" = 3, "Dosen Non PNS" = 3, " " = 1))
 
+
+jf_pns <- select(pns, Fakultas, JABATAN) %>% group_by(Fakultas, JABATAN) %>% summarize(n = n()) %>% pivot_wider(names_from = JABATAN, values_from = "n")
+
+jf_pns <- select(jf_pns, Fakultas, GB, LK, L, AA, TP)
+
+jf_pns[is.na(jf_pns)] <- 0
+
+jf_pns <- adorn_totals(jf_pns, where = c("col"), name = "JML")
+
+
+jf_non <- select(non, Fakultas, JFA) %>% group_by(Fakultas, JFA) %>% summarize(n = n()) %>% pivot_wider(names_from = JFA, values_from = "n")
+jf_non <- select(jf_non, Fakultas, L, AA, TP)
+jf_non[is.na(jf_non)] <- 0
+jf_non <- adorn_totals(jf_non, where = "col", name = "JML")
+
+jf <- left_join(jf_pns, jf_non, by = "Fakultas")
+jf$Total <- jf$JML.x + jf$JML.y
+
+fak <- data.frame(Fakultas = c("Hukum", "FKIP", "Teknik", "Pertanian","FEB", "FISIP", "Kedokteran"),
+                  fak_order = c(1:7))
+
+jf <- left_join(jf, fak, by = "Fakultas") %>% arrange(fak_order) %>% select(-fak_order)
+
+jf <- adorn_totals(jf, where = "row", name = "Total")
+
+names(jf) <- c("Fakultas", "GB", "LK", "L", "AA", "TP", "Jumlah", "L", "AA", "TP", "Jumlah", "Total")
+
+kable(jf) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) %>%
+  add_header_above(c(" " = 1, "Dosen PNS" = 6, "Dosen Non PNS" = 4, " " = 1))
+
 ```
 
 Oleh karena itu, kami memerlukan bantuan rekan-rekan Staf Kepegawaian Fakultas di lingkungan Universitasi Sultan Ageng Tirtayasa untuk membantu kami memperbaharui data dosen setiap ada perubahan. Adapun perubahan-perubahan data dosen yang diperlukan adalah sebagai berikut.
