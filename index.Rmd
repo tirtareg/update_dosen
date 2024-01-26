@@ -99,6 +99,7 @@ data2 <- adorn_totals(data2, where = c("col"), name = "JML")
 data <- left_join(data1, data2, by = "Fakultas")
 data[is.na(data)] <- 0
 data$Total <- data$JML.x + data$JML.y
+
 data <- adorn_totals(data, where = c("row"), name = "Total")
 names(data) <- c("Fakultas", "L", "P", "JML", "L", "P", "JML", "Total")
 
